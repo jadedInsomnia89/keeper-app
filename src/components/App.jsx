@@ -1,18 +1,32 @@
-import React from 'react';
+/* eslint-disable react/no-array-index-key */
+import React, { useState } from 'react';
 import Footer from './Footer';
+import AddNote from './AddNote';
 import Note from './Note';
 import Header from './Header';
-import notes from '../notes';
 
 function App() {
+  const [notes, setNotes] = useState([]);
+
+  function addNote(noteToAdd) {
+    setNotes((prev) => [...prev, noteToAdd]);
+  }
+
+  function deleteNote(id) {
+    setNotes((prev) => prev.filter((note, index) => index !== id));
+  }
+
   return (
     <div>
       <Header />
-      {notes.map((noteItem) => (
+      <AddNote onAdd={addNote} />
+      {notes.map((note, index) => (
         <Note
-          key={noteItem.key}
-          title={noteItem.title}
-          content={noteItem.content}
+          key={index}
+          id={index}
+          title={note.title}
+          content={note.content}
+          onDelete={deleteNote}
         />
       ))}
       <Footer />
