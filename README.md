@@ -1,3 +1,7 @@
+# App built with React that allows the user to add and delete notes
+
+## Notes are not persisted and are instead saved in an array instead of a DB
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
